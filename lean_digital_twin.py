@@ -225,7 +225,6 @@ class LeanDigitalTwin(ttk.Frame):
         self.last_preview_ts = None
 
         # --- shared variables for repo/prefix (fix for geometry mixing) ---
-        self.repo_var = tk.StringVar(value=self.settings.get("repo_url", ""))
         self.prefix_var = tk.StringVar(value=self.settings.get("sparql_prefix", "PREFIX ex: <http://example.org/pumps#>"))
 
         self._configure_styles()
@@ -301,13 +300,12 @@ class LeanDigitalTwin(ttk.Frame):
 
         # 1. Semantic Network URL
         ttk.Label(left, text="Semantic Network URL:").grid(row=0, column=0, sticky="w", pady=(0, 2))
-        self.url_var = tk.StringVar(value=self.settings.get("sparql_url", ""))
+        self.url_var = tk.StringVar(value=self.settings.get("repo_url", ""))
         url_entry = ttk.Entry(left, textvariable=self.url_var, width=40)
         url_entry.grid(row=1, column=0, sticky="ew", pady=(0, 8))
 
         # 2. SPARQL Prefix
         ttk.Label(left, text="SPARQL Prefix:").grid(row=2, column=0, sticky="w", pady=(0, 2))
-        self.prefix_var = tk.StringVar(value=self.settings.get("sparql_prefix", ""))
         prefix_entry = ttk.Entry(left, textvariable=self.prefix_var, width=40)
         prefix_entry.grid(row=3, column=0, sticky="ew", pady=(0, 8))
 
